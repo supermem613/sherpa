@@ -98,11 +98,11 @@
 
             try
             {
-                using (RegistryKey key = keyHKLM.OpenSubKey(@"SOFTWARE\M\Sherpa"))
+                using (RegistryKey key = keyHKLM.OpenSubKey(@"SOFTWARE\Sherpa"))
                 {
                     if (key == null)
                     {
-                        this.Logger.LogError(@"Could not find the HKEY_LOCAL_MACHINE\SOFTWARE\M\Sherpa registry key.");
+                        this.Logger.LogError(@"Could not find the HKEY_LOCAL_MACHINE\SOFTWARE\Sherpa registry key.");
                         return;
                     }
 
@@ -115,7 +115,7 @@
                             return;
                         }
 
-                        Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\M\Sherpa", "ApplyNow", 0, RegistryValueKind.DWord);
+                        Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Sherpa", "ApplyNow", 0, RegistryValueKind.DWord);
                     }
                     
                     this.ConfigurationPort = this.GetRegistryValue<int>(key, "ConfigurationPort");
@@ -132,18 +132,18 @@
                     }
                 }
 
-                using (RegistryKey key = keyHKLM.OpenSubKey(@"SOFTWARE\M\Sherpa\Routes"))
+                using (RegistryKey key = keyHKLM.OpenSubKey(@"SOFTWARE\Sherpa\Routes"))
                 {
                     if (key == null)
                     {
-                        this.Logger.LogError(@"Could not find the HKEY_LOCAL_MACHINE\SOFTWARE\M\Sherpa\Routes registry key.");
+                        this.Logger.LogError(@"Could not find the HKEY_LOCAL_MACHINE\SOFTWARE\Sherpa\Routes registry key.");
                         return;
                     }
 
                     string[] routeKeys = key.GetSubKeyNames();
                     if (routeKeys == null || routeKeys.Length == 0)
                     {
-                        this.Logger.LogError(@"The HKEY_LOCAL_MACHINE\SOFTWARE\M\Sherpa\Routes registry key is empty and does not have any routes defined.");
+                        this.Logger.LogError(@"The HKEY_LOCAL_MACHINE\SOFTWARE\Sherpa\Routes registry key is empty and does not have any routes defined.");
                         return;
                     }
 
