@@ -12,19 +12,6 @@
         /// </summary>
         public static void Main()
         {
-#if DEBUG
-            Settings settings = new Settings();
-
-            RouteManager routeManager = new RouteManager(settings);
-            ConfigurationServer configurationServer = new ConfigurationServer(settings, routeManager);
-
-            configurationServer.Start();
-            routeManager.Start();
-
-            ManualResetEvent mre = new ManualResetEvent(false);
-
-            mre.WaitOne();
-#else
             // we'll go ahead and create an array so that we
             // can add the different services that
             // we'll create over time.
@@ -42,7 +29,6 @@
             // when you start the service the SCM will call
             // the OnStart method of the service.
             Service.Run(servicesToRun);
-#endif
         }
     }
 }

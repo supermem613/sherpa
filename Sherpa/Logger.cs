@@ -37,20 +37,6 @@
         {
             this.syncObject = new object();
             this.lastEvents = new LinkedList<LogEntry>();
-
-            try
-            {
-                if (!EventLog.SourceExists(Logger.Source))
-                {
-                    EventLog.CreateEventSource(Logger.Source, "Application");
-                }
-            }
-            catch (SecurityException)
-            {
-            }
-            catch (InvalidOperationException)
-            {
-            }
         }
         
         /// <summary>

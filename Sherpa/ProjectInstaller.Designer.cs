@@ -1,4 +1,6 @@
-﻿namespace Sherpa
+﻿using System.Diagnostics;
+
+namespace Sherpa
 {
     /// <summary>
     /// Project installer.
@@ -19,6 +21,11 @@
         /// Service installer.
         /// </summary>
         private ServiceInstaller serviceInstaller;
+
+        /// <summary>
+        /// Event log installer.
+        /// </summary>
+        private EventLogInstaller eventLogInstaller;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -42,8 +49,9 @@
         {
             this.processInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this.serviceInstaller = new ServiceInstaller();
+            this.eventLogInstaller = new EventLogInstaller();
 
-            this.processInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.processInstaller.Account = System.ServiceProcess.ServiceAccount.NetworkService;
             this.processInstaller.Password = null;
             this.processInstaller.Username = null;
 
@@ -54,7 +62,8 @@
             this.Installers.AddRange(new System.Configuration.Install.Installer[] 
                 {
                     this.processInstaller,
-                    this.serviceInstaller
+                    this.serviceInstaller,
+                    this.eventLogInstaller,
                 });
         }
     }

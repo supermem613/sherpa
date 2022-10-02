@@ -127,6 +127,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventLogInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ConfigurationServer.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="LogEntry.cs" />
